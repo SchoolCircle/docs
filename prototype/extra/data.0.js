@@ -1,1 +1,1 @@
-window["hzv3"]["pid"] = {"user":null,"locale":"zh-CN","preference":null,"projectAccessToken":"gD5wcilFr8gulqO2CqCUl","projectEncryptedPassword":"","isPasswordRequired":false,"is_on_premises":false,"is_wonder_share":false};
+window["hzv3"]["pid"] = {"user":null,"locale":"zh-CN","preference":null,"projectAccessToken":"l0v096numdeot1","projectEncryptedPassword":"","isPasswordRequired":false,"is_on_premises":false,"is_wonder_share":false};
