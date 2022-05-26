@@ -25,86 +25,6 @@ generator: "@tarslib/widdershins v4.0.4"
 
 # register
 
-## POST 重置密码
-
-POST /register/resetPassword
-
-> Body 请求参数
-
-```json
-{
-  "email": "string",
-  "password": "string",
-  "pin": "string"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» email|body|string|true|邮箱|
-|» password|body|string|true|密码|
-|» pin|body|string|true|验证码|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## POST 注册
-
-POST /register/reg
-
-> Body 请求参数
-
-```json
-{
-  "email": "p.lljyezt@qq.com",
-  "password": "exercitation ea",
-  "captcha": "in dolor do Duis consectetur"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» email|body|string|true|邮箱|
-|» password|body|string|true|密码|
-|» pin|body|string|true|验证码|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## GET hello
-
-GET /register/hello
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
 ## POST 登录
 
 POST /register/login
@@ -152,6 +72,39 @@ POST /register/login
 
 ### 返回数据结构
 
+## POST 重置密码
+
+POST /register/resetPassword
+
+> Body 请求参数
+
+```json
+{
+  "email": "string",
+  "password": "string",
+  "pin": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» email|body|string|true|邮箱|
+|» password|body|string|true|密码|
+|» pin|body|string|true|验证码|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
 ## POST 发送验证码
 
 POST /register/sendEmail
@@ -170,6 +123,20 @@ POST /register/sendEmail
 |---|---|---|---|---|
 |body|body|object|false|none|
 |» email|body|string|true|邮箱|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## GET hello
+
+GET /register/hello
 
 > 返回示例
 
@@ -201,7 +168,85 @@ GET /register/findUserInfoByUid/{uid}
 
 ### 返回数据结构
 
+## POST 注册
+
+POST /register/reg
+
+> Body 请求参数
+
+```json
+{
+  "email": "p.lljyezt@qq.com",
+  "password": "exercitation ea",
+  "captcha": "in dolor do Duis consectetur"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» email|body|string|true|邮箱|
+|» password|body|string|true|密码|
+|» pin|body|string|true|验证码|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
 # chat
+
+## GET hello
+
+GET /chat/hello
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## POST 新信息
+
+POST /chat/newMessge
+
+> Body 请求参数
+
+```json
+{
+  "uid2": "string",
+  "token": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» uid2|body|string|true|none|
+|» token|body|string|true|none|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
 
 ## GET findAllChat
 
@@ -320,113 +365,7 @@ POST /chat/sendMessage
 
 ### 返回数据结构
 
-## POST 新信息
-
-POST /chat/newMessge
-
-> Body 请求参数
-
-```json
-{
-  "uid2": "string",
-  "token": "string"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» uid2|body|string|true|none|
-|» token|body|string|true|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## GET hello
-
-GET /chat/hello
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
 # playground
-
-## POST 评论
-
-POST /ground/addComment
-
-> Body 请求参数
-
-```json
-{
-  "uid": "string",
-  "token": "string",
-  "tid": "string",
-  "text": "string"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» uid|body|string|true|评论者的id|
-|» token|body|string|true|none|
-|» tid|body|string|true|评论的帖子id|
-|» text|body|string|true|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## GET hello
-
-GET /ground/hello
-
-> Body 请求参数
-
-```json
-{}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
 
 ## POST 查看某人发的帖
 
@@ -452,62 +391,6 @@ POST /ground/findTweetByUid
 |» uid|body|string|true|用户id|
 |» pagesize|body|string|true|返回的每页帖子数量|
 |» page|body|string|true|返回的页号|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## GET 查看帖子
-
-GET /ground/{pagesize}/{page}
-
-分页返回，pagesize处为每页大小，page处为页数
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|pagesize|path|string|true|none|
-|page|path|string|true|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## POST 删除帖子
-
-POST /ground/delTweet
-
-> Body 请求参数
-
-```json
-{
-  "uid": "string",
-  "token": "string",
-  "tid": "string"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» uid|body|string|true|删除操作的用户(保证是发帖者)|
-|» token|body|string|true|none|
-|» tid|body|string|true|none|
 
 > 返回示例
 
@@ -556,6 +439,64 @@ POST /ground/findMyTweet
 
 ### 返回数据结构
 
+## GET 查看帖子
+
+GET /ground/{pagesize}/{page}
+
+分页返回，pagesize处为每页大小，page处为页数
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|pagesize|path|string|true|none|
+|page|path|string|true|none|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## POST 评论
+
+POST /ground/addComment
+
+> Body 请求参数
+
+```json
+{
+  "uid": "string",
+  "token": "string",
+  "tid": "string",
+  "text": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» uid|body|string|true|评论者的id|
+|» token|body|string|true|none|
+|» tid|body|string|true|评论的帖子id|
+|» text|body|string|true|none|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
 ## POST 给帖子点赞
 
 POST /ground/addGood
@@ -578,6 +519,20 @@ POST /ground/addGood
 |» uid|body|string|true|点赞用户id|
 |» token|body|string|true|none|
 |» tid|body|string|true|帖id|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## GET findAll
+
+GET /ground/findAll
 
 > 返回示例
 
@@ -622,9 +577,54 @@ POST /ground/addTweet
 
 ### 返回数据结构
 
-## GET findAll
+## POST 删除帖子
 
-GET /ground/findAll
+POST /ground/delTweet
+
+> Body 请求参数
+
+```json
+{
+  "uid": "string",
+  "token": "string",
+  "tid": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» uid|body|string|true|删除操作的用户(保证是发帖者)|
+|» token|body|string|true|none|
+|» tid|body|string|true|none|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## GET hello
+
+GET /ground/hello
+
+> Body 请求参数
+
+```json
+{}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
 
 > 返回示例
 
@@ -638,11 +638,11 @@ GET /ground/findAll
 
 # ship
 
-## POST 查看添加好友成功信息
+## POST 被关注列表
 
-POST /ship/checkFriendSuccess
+POST /ship/findFollowedByUid
 
-查看最近的添加好友成功的信息
+返回关注传入uid的人的列表
 
 > Body 请求参数
 
@@ -671,17 +671,18 @@ POST /ship/checkFriendSuccess
 
 ### 返回数据结构
 
-## POST 添加好友
+## POST 查看添加好友请求
 
-POST /ship/addFriendAsk
+POST /ship/checkFriendAsk
+
+查看别人发送的添加好友请求
 
 > Body 请求参数
 
 ```json
 {
-  "uid1": "string",
-  "token": "string",
-  "uid2": "string"
+  "uid": "string",
+  "token": "string"
 }
 ```
 
@@ -690,9 +691,41 @@ POST /ship/addFriendAsk
 |名称|位置|类型|必选|说明|
 |---|---|---|---|---|
 |body|body|object|false|none|
-|» uid1|body|string|true|none|
+|» uid|body|string|true|none|
 |» token|body|string|true|none|
-|» uid2|body|string|true|none|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## POST 添加关注
+
+POST /ship/addFollow
+
+> Body 请求参数
+
+```json
+{
+  "followed": "string",
+  "following": "string",
+  "token": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» followed|body|string|true|被关注者|
+|» following|body|string|true|关注者|
+|» token|body|string|true|关注者token|
 
 > 返回示例
 
@@ -718,9 +751,28 @@ POST /ship/checkFriendFail
 
 ### 返回数据结构
 
-## GET hello
+## POST 关注列表
 
-GET /ship/hello
+POST /ship/findFollowingByUid
+
+返回传入的uid关注的人
+
+> Body 请求参数
+
+```json
+{
+  "uid": "string",
+  "token": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» uid|body|string|true|none|
+|» token|body|string|true|没啥用，但是传一下|
 
 > 返回示例
 
@@ -765,11 +817,11 @@ POST /ship/isAdd
 
 ### 返回数据结构
 
-## POST 查看添加好友请求
+## POST 查看添加好友成功信息
 
-POST /ship/checkFriendAsk
+POST /ship/checkFriendSuccess
 
-查看别人发送的添加好友请求
+查看最近的添加好友成功的信息
 
 > Body 请求参数
 
@@ -829,6 +881,53 @@ POST /ship/findByUid
 
 ### 返回数据结构
 
+## POST 取消关注
+
+POST /ship/delFollow
+
+> Body 请求参数
+
+```json
+{
+  "followed": "string",
+  "following": "string",
+  "token": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» followed|body|string|true|被关注者|
+|» following|body|string|true|关注者|
+|» token|body|string|true|关注者tkoen|
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## GET hello
+
+GET /ship/hello
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
 ## POST addRelation
 
 POST /ship/addRelation
@@ -864,18 +963,17 @@ POST /ship/addRelation
 
 ### 返回数据结构
 
-## POST 被关注列表
+## POST 添加好友
 
-POST /ship/findFollowedByUid
-
-返回关注传入uid的人的列表
+POST /ship/addFriendAsk
 
 > Body 请求参数
 
 ```json
 {
-  "uid": "string",
-  "token": "string"
+  "uid1": "string",
+  "token": "string",
+  "uid2": "string"
 }
 ```
 
@@ -884,41 +982,9 @@ POST /ship/findFollowedByUid
 |名称|位置|类型|必选|说明|
 |---|---|---|---|---|
 |body|body|object|false|none|
-|» uid|body|string|true|none|
+|» uid1|body|string|true|none|
 |» token|body|string|true|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## POST 关注列表
-
-POST /ship/findFollowingByUid
-
-返回传入的uid关注的人
-
-> Body 请求参数
-
-```json
-{
-  "uid": "string",
-  "token": "string"
-}
-```
-
-### 请求参数
-
-|名称|位置|类型|必选|说明|
-|---|---|---|---|---|
-|body|body|object|false|none|
-|» uid|body|string|true|none|
-|» token|body|string|true|没啥用，但是传一下|
+|» uid2|body|string|true|none|
 
 > 返回示例
 
@@ -935,6 +1001,20 @@ POST /ship/findFollowingByUid
 ## GET TestfindAll
 
 GET /findAll
+
+> 返回示例
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+## GET hello
+
+GET /hello
 
 > 返回示例
 
@@ -964,20 +1044,6 @@ POST /sendEmail
 |---|---|---|---|---|
 |body|body|object|false|none|
 |» email|body|string|true|none|
-
-> 返回示例
-
-### 返回结果
-
-|状态码|状态码含义|说明|数据模型|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
-
-### 返回数据结构
-
-## GET hello
-
-GET /hello
 
 > 返回示例
 
