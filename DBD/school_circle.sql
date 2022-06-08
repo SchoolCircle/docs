@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 26/05/2022 22:51:14
+ Date: 08/06/2022 22:25:27
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `ccomment`  (
   `tid` int NULL DEFAULT NULL COMMENT '评论处在的帖子的id',
   `is_alive` tinyint NOT NULL DEFAULT 1,
   PRIMARY KEY (`ccid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '此表用于对于评论的回复的保存（类似于楼中楼的效果）' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '此表用于对于评论的回复的保存（类似于楼中楼的效果）' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for chat
@@ -43,7 +43,7 @@ CREATE TABLE `chat`  (
   `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '发送内容',
   `time` datetime NOT NULL COMMENT '时间',
   PRIMARY KEY (`chat_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '聊天记录保存表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '聊天记录保存表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for comment
@@ -57,18 +57,33 @@ CREATE TABLE `comment`  (
   `time` datetime NOT NULL COMMENT '回复时间',
   `is_alive` tinyint NOT NULL DEFAULT 1 COMMENT '评论是否未被删除',
   PRIMARY KEY (`cid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for favourite
+-- ----------------------------
+DROP TABLE IF EXISTS `favourite`;
+CREATE TABLE `favourite`  (
+  `fid` int NOT NULL AUTO_INCREMENT,
+  `tid` int NOT NULL,
+  `uid` int NOT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  `is_alive` tinyint NULL DEFAULT NULL,
+  PRIMARY KEY (`fid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for follow
 -- ----------------------------
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE `follow`  (
-  `fid` int NOT NULL,
+  `fid` int NOT NULL AUTO_INCREMENT,
   `followed` int NULL DEFAULT NULL,
   `following` int NULL DEFAULT NULL,
   `f_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`fid`) USING BTREE
+  PRIMARY KEY (`fid`) USING BTREE,
+  INDEX `be`(`followed`) USING BTREE,
+  INDEX `doing`(`following`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -85,7 +100,7 @@ CREATE TABLE `friend_ask`  (
   `aid` int NOT NULL AUTO_INCREMENT,
   `is_fail` tinyint NULL DEFAULT NULL COMMENT '是否被拒绝',
   PRIMARY KEY (`aid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '添加好友请求表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '添加好友请求表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for login_info
@@ -108,7 +123,7 @@ CREATE TABLE `relation`  (
   `uid2` int NOT NULL,
   `is_alive` tinyint NOT NULL DEFAULT 1,
   PRIMARY KEY (`rid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for test
@@ -118,7 +133,7 @@ CREATE TABLE `test`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '测试id',
   `text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '测试文字',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tweet
@@ -132,8 +147,11 @@ CREATE TABLE `tweet`  (
   `text` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '贴文内容',
   `is_alive` tinyint NOT NULL DEFAULT 1 COMMENT '是否有效',
   `good_num` int UNSIGNED NULL DEFAULT 0,
+  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '标题',
+  `have_img` tinyint NULL DEFAULT NULL COMMENT '是否有图片',
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片名称',
   PRIMARY KEY (`tid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '帖子列表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '帖子列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for user
@@ -147,7 +165,7 @@ CREATE TABLE `user`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '邮箱',
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for user_info
@@ -162,6 +180,7 @@ CREATE TABLE `user_info`  (
   `wechat` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '微信号',
   `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
   `college` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学院',
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`uid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
